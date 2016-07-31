@@ -10,8 +10,11 @@ import UIKit
 
 class RestaurantListController: UITableViewController {
 
-    let coordinate = Coordinate(latitude: 40.759106, longitude: -73.985185)
+    var coordinate: Coordinate?
+   //  let coordinate = Coordinate(latitude: 40.759106, longitude: -73.985185)
     let foursquareClient = FoursquareClient(clientID: "EPGEGJ5DFVYTGOG1R2DXU325IMO2MKNXRVS1PLX4ZBJDYSVK", clientSecret: "31R3WXRULOPL3JDY0KJ21IQLFXO20AJ11XUCDE24GMSYLVNF")
+    let manager = LocationManager()
+    
     
     var venues: [Venue] = []{
         didSet {
@@ -26,15 +29,24 @@ class RestaurantListController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        foursquareClient.fetchRestaurantsFor(coordinate, category: .Food(nil))
-        { result in
-            switch result {
-            case .Success(let venues):
-                self.venues = venues
-            case .Failure(let error):
-                print(error)
+        
+        manager.getPermission()
+        manager.onLocationFix = { [weak self] coordinate in
+            
+            self?.coordinate = coordinate
+            
+            self?.foursquareClient.fetchRestaurantsFor(coordinate, category: .Food(nil))
+            { result in
+                switch result {
+                case .Success(let venues):
+                    self?.venues = venues
+                case .Failure(let error):
+                    print(error)
+                }
             }
         }
+        
+        
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -98,15 +110,18 @@ class RestaurantListController: UITableViewController {
 
     @IBAction func refreshData(sender: AnyObject) {
         
-        foursquareClient.fetchRestaurantsFor(coordinate, category: .Food(nil))
-        { result in
-            switch result {
-            case .Success(let venues):
-                self.venues = venues
-            case .Failure(let error):
-                print(error)
+        if let coordinate = coordinate {
+            foursquareClient.fetchRestaurantsFor(coordinate, category: .Food(nil))
+            { result in
+                switch result {
+                case .Success(let venues):
+                    self.venues = venues
+                case .Failure(let error):
+                    print(error)
+                }
             }
         }
+        
         refreshControl?.endRefreshing()
     }
 
