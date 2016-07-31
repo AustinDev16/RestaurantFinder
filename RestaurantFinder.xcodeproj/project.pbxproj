@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9724C68B1CDAA25B00269D61 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9724C68A1CDAA25B00269D61 /* AppDelegate.swift */; };
-		9724C68D1CDAA25B00269D61 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9724C68C1CDAA25B00269D61 /* MasterViewController.swift */; };
+		9724C68D1CDAA25B00269D61 /* RestaurantListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9724C68C1CDAA25B00269D61 /* RestaurantListController.swift */; };
 		9724C68F1CDAA25B00269D61 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9724C68E1CDAA25B00269D61 /* DetailViewController.swift */; };
 		9724C6921CDAA25B00269D61 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9724C6901CDAA25B00269D61 /* Main.storyboard */; };
 		9724C6941CDAA25B00269D61 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9724C6931CDAA25B00269D61 /* Assets.xcassets */; };
@@ -21,7 +21,7 @@
 /* Begin PBXFileReference section */
 		9724C6871CDAA25B00269D61 /* RestaurantFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RestaurantFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9724C68A1CDAA25B00269D61 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9724C68C1CDAA25B00269D61 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
+		9724C68C1CDAA25B00269D61 /* RestaurantListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantListController.swift; sourceTree = "<group>"; };
 		9724C68E1CDAA25B00269D61 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		9724C6911CDAA25B00269D61 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9724C6931CDAA25B00269D61 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -63,7 +63,7 @@
 			isa = PBXGroup;
 			children = (
 				9724C68A1CDAA25B00269D61 /* AppDelegate.swift */,
-				9724C68C1CDAA25B00269D61 /* MasterViewController.swift */,
+				9724C68C1CDAA25B00269D61 /* RestaurantListController.swift */,
 				9724C68E1CDAA25B00269D61 /* DetailViewController.swift */,
 				CD17D4641CDB9EDE00A46DCF /* FoursquareClient.swift */,
 				9724C69E1CDAA27B00269D61 /* APIClient.swift */,
@@ -149,7 +149,7 @@
 			files = (
 				CD17D4671CDBA03400A46DCF /* FoursquareModels.swift in Sources */,
 				9724C68F1CDAA25B00269D61 /* DetailViewController.swift in Sources */,
-				9724C68D1CDAA25B00269D61 /* MasterViewController.swift in Sources */,
+				9724C68D1CDAA25B00269D61 /* RestaurantListController.swift in Sources */,
 				CD17D4651CDB9EDE00A46DCF /* FoursquareClient.swift in Sources */,
 				9724C68B1CDAA25B00269D61 /* AppDelegate.swift in Sources */,
 				9724C69F1CDAA27B00269D61 /* APIClient.swift in Sources */,
