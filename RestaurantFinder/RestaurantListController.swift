@@ -74,11 +74,12 @@ class RestaurantListController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("RestaurantCell", forIndexPath: indexPath) as! RestaurantCell
         
         let venue = venues[indexPath.row]
-        cell.textLabel?.text = venue.name
-        
+        cell.restaurantTitleLabel.text = venue.name
+        cell.restaurantCheckinLabel.text = venue.checkins.description
+        cell.restaurantCategoryLabel.text = venue.categoryName
         return cell
     }
 
