@@ -18,9 +18,32 @@ protocol JSONDecodable {
 }
 
 protocol Endpoint {
-    var baseURL: NSURL { get }
+    var baseURL: String { get }
     var path: String { get }
-    var request: NSURLRequest { get }
+    var parameters: [String: AnyObject] { get }
+}
+
+extension Endpoint {
+    var queryComponents: [NSURLQueryItem] {
+        var components = [NSURLQueryItem]()
+        
+        for (key, value) in parameters {
+            let queryItem = NSURLQueryItem(name: key, value: "\(value)")
+            components.append(queryItem)
+        }
+        
+        return components
+    }
+    
+    var request: NSURLRequest {
+        let components = NSURLComponents(string: baseURL)!
+        components.path = path
+        components.queryItems = queryComponents
+
+        
+        let url = components.URL!
+        return NSURLRequest(URL: url)
+    }
 }
 
 typealias JSON = [String: AnyObject]
@@ -97,5 +120,55 @@ extension APIClient {
         
         task.resume()
     }
+    
+    func fetch<T: JSONDecodable>(endpoint: Endpoint, parse: JSON -> [T]?, completion: APIResult<[T]> -> Void) {
+        
+        let request = endpoint.request
+        
+        let task = JSONTaskWithRequest(request) { json, response, error in
+            
+            dispatch_async(dispatch_get_main_queue()) {
+                guard let json = json else {
+                    if let error = error {
+                        completion(.Failure(error))
+                    } else {
+                        // TODO: Implement error handling
+                    }
+                    return
+                }
+                
+                if let resource = parse(json) {
+                    completion(.Success(resource))
+                } else {
+                    let error = NSError(domain: TRENetworkingErrorDomain, code: UnexpectedResponseError, userInfo: nil)
+                    completion(.Failure(error))
+                }
+            }
+        }
+        
+        task.resume()
+
+    }
+    
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
