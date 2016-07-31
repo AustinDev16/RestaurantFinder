@@ -96,6 +96,19 @@ class RestaurantListController: UITableViewController {
     }
 
 
+    @IBAction func refreshData(sender: AnyObject) {
+        
+        foursquareClient.fetchRestaurantsFor(coordinate, category: .Food(nil))
+        { result in
+            switch result {
+            case .Success(let venues):
+                self.venues = venues
+            case .Failure(let error):
+                print(error)
+            }
+        }
+        refreshControl?.endRefreshing()
+    }
 
 
 }
