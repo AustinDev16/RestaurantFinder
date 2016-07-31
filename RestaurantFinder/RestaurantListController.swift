@@ -7,14 +7,16 @@
 //
 
 import UIKit
+import MapKit
 
-class RestaurantListController: UITableViewController {
+class RestaurantListController: UITableViewController, MKMapViewDelegate {
 
     var coordinate: Coordinate?
    //  let coordinate = Coordinate(latitude: 40.759106, longitude: -73.985185)
     let foursquareClient = FoursquareClient(clientID: "EPGEGJ5DFVYTGOG1R2DXU325IMO2MKNXRVS1PLX4ZBJDYSVK", clientSecret: "31R3WXRULOPL3JDY0KJ21IQLFXO20AJ11XUCDE24GMSYLVNF")
     let manager = LocationManager()
     
+    @IBOutlet weak var mapView: MKMapView!
     
     var venues: [Venue] = []{
         didSet {
@@ -125,6 +127,15 @@ class RestaurantListController: UITableViewController {
         refreshControl?.endRefreshing()
     }
 
+    /////
+    func mapView(mapView: MKMapView, didUpdateUserLocation userLocation: MKUserLocation) {
+        var region = MKCoordinateRegion()
+        region.center = mapView.userLocation.coordinate
+        region.span.latitudeDelta = 0.01
+        region.span.longitudeDelta = 0.01
+        
+        mapView.setRegion(region, animated: true)
+    }
 
 }
 

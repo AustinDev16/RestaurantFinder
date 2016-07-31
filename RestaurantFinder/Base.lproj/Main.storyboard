@@ -80,9 +80,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <mapView key="tableHeaderView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" id="PIn-HD-thE">
+                            <rect key="frame" x="0.0" y="64" width="600" height="200"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <connections>
+                                <outlet property="delegate" destination="7bK-jq-Zjz" id="Bl4-qf-43j"/>
+                            </connections>
+                        </mapView>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RestaurantCell" id="WCw-Qf-5nD" customClass="RestaurantCell" customModule="RestaurantFinder" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="86" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="286" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WCw-Qf-5nD" id="37f-cq-3Eg">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -137,6 +144,9 @@
                             <action selector="refreshData:" destination="7bK-jq-Zjz" eventType="valueChanged" id="58L-Lx-Twl"/>
                         </connections>
                     </refreshControl>
+                    <connections>
+                        <outlet property="mapView" destination="PIn-HD-thE" id="6vC-Qg-vGK"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rux-fX-hf1" sceneMemberID="firstResponder"/>
             </objects>

@@ -18,6 +18,7 @@
 		CD17D4671CDBA03400A46DCF /* FoursquareModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD17D4661CDBA03400A46DCF /* FoursquareModels.swift */; };
 		D9E1C2581D4EAE8A00668499 /* RestaurantCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E1C2571D4EAE8A00668499 /* RestaurantCell.swift */; };
 		D9E1C25A1D4EB82E00668499 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E1C2591D4EB82E00668499 /* LocationManager.swift */; };
+		D9E1C25C1D4EC07D00668499 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9E1C25B1D4EC07D00668499 /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		CD17D4661CDBA03400A46DCF /* FoursquareModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoursquareModels.swift; sourceTree = "<group>"; };
 		D9E1C2571D4EAE8A00668499 /* RestaurantCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantCell.swift; sourceTree = "<group>"; };
 		D9E1C2591D4EB82E00668499 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		D9E1C25B1D4EC07D00668499 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9E1C25C1D4EC07D00668499 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -50,6 +53,7 @@
 		9724C67E1CDAA25B00269D61 = {
 			isa = PBXGroup;
 			children = (
+				D9E1C25B1D4EC07D00668499 /* MapKit.framework */,
 				9724C6891CDAA25B00269D61 /* RestaurantFinder */,
 				9724C6881CDAA25B00269D61 /* Products */,
 			);
@@ -114,6 +118,11 @@
 				TargetAttributes = {
 					9724C6861CDAA25B00269D61 = {
 						CreatedOnToolsVersion = 7.3;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
