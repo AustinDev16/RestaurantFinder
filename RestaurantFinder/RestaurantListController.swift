@@ -21,6 +21,7 @@ class RestaurantListController: UITableViewController, MKMapViewDelegate {
     var venues: [Venue] = []{
         didSet {
             tableView.reloadData()
+            addMapAnnotations()
         }
     }
     
@@ -125,16 +126,36 @@ class RestaurantListController: UITableViewController, MKMapViewDelegate {
         }
         
         refreshControl?.endRefreshing()
+        
     }
 
     /////
     func mapView(mapView: MKMapView, didUpdateUserLocation userLocation: MKUserLocation) {
         var region = MKCoordinateRegion()
         region.center = mapView.userLocation.coordinate
-        region.span.latitudeDelta = 0.01
-        region.span.longitudeDelta = 0.01
+        region.span.latitudeDelta = 0.02
+        region.span.longitudeDelta = 0.02
         
         mapView.setRegion(region, animated: true)
+    }
+    
+    
+    func addMapAnnotations() {
+        if venues.count > 0 {
+            let annotations: [MKPointAnnotation] = venues.map { venue in
+             let point = MKPointAnnotation()
+                if let coordinate = venue.location?.coordinate{
+                    point.coordinate = CLLocationCoordinate2D(latitude: coordinate.longitude, longitude: coordinate.longitude)
+                    point.title = venue.name
+                }
+                return point
+            }
+            
+            mapView.addAnnotations(annotations)
+            
+        }
+        
+        
     }
 
 }
